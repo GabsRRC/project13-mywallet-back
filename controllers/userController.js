@@ -32,7 +32,7 @@ export async function createUser (req, res){
 
     const passwordHash = bcrypt.hashSync(usuario.password, 10);
 
-    await db.collection('cadastros').insertOne({ ...usuario, password: passwordHash });
+    await db.collection('cadastros').insertOne({ ...usuario, password: passwordHash, passwordValid: passwordHash });
 
     res.status(201).send('Usuário criado');
 };
